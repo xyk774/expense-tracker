@@ -12,6 +12,8 @@
   - 每一塊顯示百分比與金額，標題顯示總支出
   - 支援中文類別名稱
   - 自動存成 `pie_chart_sample.png`
+  - 列出所有支出（含編號與總計）
+  - 依編號刪除支出，刪除前會再次確認
 
 ## 環境需求
 - Python 3.10 以上
@@ -27,7 +29,7 @@ pip install -r requirements.txt
 ```
 python expense_input.py
 ```
-依提示輸入日期、金額、類別、備註，輸入 `n` 結束。
+執行後出現選單：`1` 新增支出、`2` 列出所有支出、`3` 刪除支出、`4` 離開。
 
 ### 2. 產生圓餅圖
 ```
@@ -74,6 +76,7 @@ expense-tracker/
 | `feature-piechart` | B | 圓餅圖視覺化模組 |
 | `docs-readme` | A | README 使用說明與範例圖 |
 | `docs-improve` | A | requirements.txt、.gitignore、完整 README |
+| `feature-delete` | A | 列出與刪除支出 |
 
 ```
 git checkout main
