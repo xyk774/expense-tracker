@@ -14,6 +14,9 @@
   - 自動存成 `pie_chart_sample.png`
   - 列出所有支出（含編號與總計）
   - 依編號刪除支出，刪除前會再次確認
+  - **每月趨勢圖**：依月份加總支出畫成長條圖
+  - 每根長條標示金額，虛線為每月平均
+  - 自動存成 `trend_chart_sample.png`
 
 ## 環境需求
 - Python 3.10 以上
@@ -37,8 +40,15 @@ python pie_chart.py
 ```
 讀取 `expenses.csv` 畫出圓餅圖，並存成 `pie_chart_sample.png`。
 
+### 3. 產生每月趨勢圖
+```
+python trend_chart.py
+```
+讀取 `expenses.csv`，依月份畫出支出長條圖，並存成 `trend_chart_sample.png`。
+
 ## 範例圖表
 ![pie chart](pie_chart_sample.png)
+![trend chart](trend_chart_sample.png)
 
 ## 資料格式
 `expenses.csv` 的欄位：
@@ -57,6 +67,8 @@ expense-tracker/
 ├── pie_chart.py          # 視覺化模組（Member B）
 ├── expenses.csv          # 支出資料
 ├── pie_chart_sample.png  # 圓餅圖範例
+├── trend_chart.py        # 每月趨勢圖
+├── trend_chart_sample.png
 ├── requirements.txt      # 需要的套件
 └── README.md
 ```
@@ -77,6 +89,7 @@ expense-tracker/
 | `docs-readme` | A | README 使用說明與範例圖 |
 | `docs-improve` | A | requirements.txt、.gitignore、完整 README |
 | `feature-delete` | A | 列出與刪除支出 |
+| `feature-trend` | A | 每月支出趨勢圖 |
 
 ```
 git checkout main
