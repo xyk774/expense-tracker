@@ -1,30 +1,82 @@
 # Expense Tracker
 
-簡單的記帳工具：輸入支出，並依類別畫出圓餅圖。
+以 Python 製作的簡易記帳工具：輸入每筆支出，並依類別畫出圓餅圖。
+本專案為軟體工程導論 Assignment 1（Version Control Practice），兩人以 Git 分支協作完成。
+
+## 功能
+- **輸入支出**：記錄日期、金額、類別、備註（備註可留空）
+  - 日期直接按 Enter 自動帶入今天
+  - 檢查日期格式與金額，輸入錯誤會要求重新輸入
+  - 可連續輸入多筆，資料自動存入 `expenses.csv`
+- **圓餅圖**：依類別加總金額並畫出圓餅圖
+  - 每一塊顯示百分比與金額，標題顯示總支出
+  - 支援中文類別名稱
+  - 自動存成 `pie_chart_sample.png`
 
 ## 環境需求
 - Python 3.10 以上
 - matplotlib
 
+```
+pip install -r requirements.txt
+```
+
 ## 使用方式
 
-### 輸入支出
+### 1. 輸入支出
 ```
 python expense_input.py
 ```
-依提示輸入日期（直接按 Enter 用今天）、金額、類別、備註（可留空）。
-資料會存在 `expenses.csv`，欄位為 `date, amount, category, note`。
+依提示輸入日期、金額、類別、備註，輸入 `n` 結束。
 
-### 產生圓餅圖
+### 2. 產生圓餅圖
 ```
-pip install matplotlib
 python pie_chart.py
 ```
-讀取 `expenses.csv`，依類別加總金額並畫出圓餅圖，同時存成 `pie_chart_sample.png`。
+讀取 `expenses.csv` 畫出圓餅圖，並存成 `pie_chart_sample.png`。
 
 ## 範例圖表
 ![pie chart](pie_chart_sample.png)
 
+## 資料格式
+`expenses.csv` 的欄位：
+
+| 欄位 | 說明 | 範例 |
+|---|---|---|
+| date | 日期（YYYY-MM-DD） | 2026-11-25 |
+| amount | 金額 | 70 |
+| category | 類別 | food |
+| note | 備註（可空白） | 午餐 |
+
+## 專案結構
+```
+expense-tracker/
+├── expense_input.py      # 輸入模組（Member A）
+├── pie_chart.py          # 視覺化模組（Member B）
+├── expenses.csv          # 支出資料
+├── pie_chart_sample.png  # 圓餅圖範例
+├── requirements.txt      # 需要的套件
+└── README.md
+```
+
 ## 分工
-- Member A (xyk774)：輸入模組
-- Member B：視覺化模組
+| 成員 | GitHub | 負責 |
+|---|---|---|
+| Member A | [xyk774](https://github.com/xyk774) | 輸入模組、README、分支合併 |
+| Member B | [weiwei0115](https://github.com/weiwei0115) | 視覺化模組（圓餅圖） |
+
+## Git 協作流程
+每位成員在自己的分支上開發，完成後在指令列以 `git merge --no-ff` 合併回 `main`，保留每條分支的合併紀錄。
+
+| 分支 | 負責人 | 內容 |
+|---|---|---|
+| `feature-input` | A | 支出輸入模組 |
+| `feature-piechart` | B | 圓餅圖視覺化模組 |
+| `docs-readme` | A | README 使用說明與範例圖 |
+| `docs-improve` | A | requirements.txt、.gitignore、完整 README |
+
+```
+git checkout main
+git merge --no-ff feature-input
+git merge --no-ff origin/feature-piechart
+```
